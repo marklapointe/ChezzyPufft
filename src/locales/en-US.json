@@ -4,7 +4,11 @@
     "selectUser": "Select a user",
     "manualLogin": "Manual login",
     "connecting": "Connecting...",
-    "error": "Login failed. Please try again."
+    "error": "Login failed. Please try again.",
+    "serverUrl": "Server URL",
+    "username": "Username",
+    "password": "Password",
+    "signIn": "Sign In"
   },
   "nav": {
     "home": "Home",
@@ -19,7 +23,95 @@
     "welcome": "Welcome",
     "continueWatching": "Continue Watching",
     "recentlyAdded": "Recently Added",
-    "library": "Library"
+    "library": "Library",
+    "goodMorning": "Good morning",
+    "goodAfternoon": "Good afternoon",
+    "goodEvening": "Good evening",
+    "activeSessions": "Active Sessions",
+    "viewAll": "View all"
+  },
+  "movies": {
+    "title": "Movies",
+    "genres": "Genres",
+    "sortBy": "Sort by",
+    "sortName": "Name",
+    "sortYear": "Year",
+    "sortRating": "Rating"
+  },
+  "tv": {
+    "title": "TV Shows",
+    "genres": "Genres",
+    "sortBy": "Sort by",
+    "sortName": "Name",
+    "sortYear": "Year",
+    "sortRating": "Rating",
+    "unwatched": "{{count}} unwatched",
+    "season": "Season {{number}}",
+    "episode": "Episode {{number}}"
+  },
+  "music": {
+    "title": "Music",
+    "albums": "Albums",
+    "artists": "Artists",
+    "songs": "Songs"
+  },
+  "liveTv": {
+    "title": "Live TV",
+    "channels": "Channels",
+    "noChannels": "No live TV channels",
+    "channel": "Channel {{number}}"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search movies, TV shows, music...",
+    "recentSearches": "Recent Searches",
+    "noResults": "No results found for \"{{query}}\"",
+    "results": "{{count}} results",
+    "clearRecent": "Clear recent searches"
+  },
+  "settings": {
+    "title": "Settings",
+    "serverConnection": "Server Connection",
+    "account": "Account",
+    "signOut": "Sign Out",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "player": {
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop",
+    "previous": "Previous",
+    "next": "Next",
+    "volume": "Volume",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit fullscreen",
+    "speed": "Speed",
+    "subtitles": "Subtitles",
+    "audioTracks": "Audio Tracks",
+    "quality": "Quality",
+    "buffering": "Buffering...",
+    "playbackError": "Playback error occurred"
+  },
+  "item": {
+    "play": "Play",
+    "resume": "Resume",
+    "markPlayed": "Mark as played",
+    "markUnplayed": "Mark as unplayed",
+    "addToQueue": "Add to queue",
+    "favorite": "Favorite",
+    "unfavorite": "Remove favorite",
+    "overview": "Overview",
+    "cast": "Cast & Crew",
+    "similar": "Similar",
+    "seasons": "Seasons",
+    "episodes": "Episodes",
+    "trailers": "Trailers",
+    "specials": "Specials"
   },
   "common": {
     "loading": "Loading...",
@@ -31,6 +123,16 @@
     "edit": "Edit",
     "play": "Play",
     "pause": "Pause",
-    "search": "Search"
+    "search": "Search",
+    "noItems": "No items",
+    "serverConnected": "Connected",
+    "serverDisconnected": "Disconnected",
+    "serverChecking": "Checking...",
+    "addedToday": "Today",
+    "addedYesterday": "Yesterday",
+    "addedDays": "{{count}} days ago",
+    "addedOn": "Added {{date}}",
+    "runtime": "{{hours}}h {{minutes}}m",
+    "rating": "{{rating}}/10"
   }
 }
