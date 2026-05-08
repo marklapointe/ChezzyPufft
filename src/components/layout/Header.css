@@ -1,0 +1,45 @@
+.skinHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-color: #43A047;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 1000;
+}
+
+.headerTitle h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.headerUser {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userName {
+  color: #fff;
+  font-size: 14px;
+}
+
+.logoutButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.logoutButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

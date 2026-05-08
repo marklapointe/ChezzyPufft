@@ -1,0 +1,36 @@
+{
+  "appName": "Emby",
+  "login": {
+    "selectUser": "Select a user",
+    "manualLogin": "Manual login",
+    "connecting": "Connecting...",
+    "error": "Login failed. Please try again."
+  },
+  "nav": {
+    "home": "Home",
+    "movies": "Movies",
+    "tv": "TV",
+    "music": "Music",
+    "liveTv": "Live TV",
+    "search": "Search",
+    "settings": "Settings"
+  },
+  "home": {
+    "welcome": "Welcome",
+    "continueWatching": "Continue Watching",
+    "recentlyAdded": "Recently Added",
+    "library": "Library"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "play": "Play",
+    "pause": "Pause",
+    "search": "Search"
+  }
+}

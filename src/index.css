@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: #ffffff;
+  background-color: #000000;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mouseIdle,
+.mouseIdle button,
+.mouseIdle select,
+.mouseIdle input,
+.mouseIdle textarea,
+.mouseIdle a,
+.mouseIdle label {
+  cursor: none !important;
+}
+
+.preload {
+  background-color: #000;
+}
+
+.transparentDocument,
+.backgroundContainer-transparent:not(.withBackdrop) {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+.mainDrawerHandle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 10px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.mouseIdle .hide-mouse-idle,
+.mouseIdle-tv .hide-mouse-idle-tv {
+  display: none !important;
+}
