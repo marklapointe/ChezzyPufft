@@ -9,6 +9,7 @@ interface AuthState {
   isAuthenticated: boolean;
   login: (user: User, accessToken: string, serverUrl: string) => void;
   logout: () => void;
+  updateUser: (updates: Partial<User>) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -21,7 +22,11 @@ export const useAuthStore = create<AuthState>()(
       login: (user, accessToken, serverUrl) =>
         set({ user, accessToken, serverUrl, isAuthenticated: true }),
       logout: () =>
-        set({ user: null, accessToken: null, serverUrl: null, isAuthenticated: false })
+        set({ user: null, accessToken: null, serverUrl: null, isAuthenticated: false }),
+      updateUser: (updates) =>
+        set((state) => ({
+          user: state.user ? { ...state.user, ...updates } : null
+        }))
     }),
     {
       name: 'emby-auth'

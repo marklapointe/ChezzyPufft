@@ -10,7 +10,7 @@ export function LoginPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { login } = useAuthStore();
-  const [users, setUsers] = useState<User[]>([]);
+  const [users] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 

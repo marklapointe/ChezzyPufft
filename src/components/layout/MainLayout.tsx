@@ -3,7 +3,11 @@ import { Header } from './Header';
 import { NavDrawer } from './NavDrawer';
 import './MainLayout.css';
 
-export function MainLayout() {
+interface MainLayoutProps {
+  children?: React.ReactNode;
+}
+
+export function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className="mainLayout">
       <div className="backdropContainer" />
@@ -11,6 +15,7 @@ export function MainLayout() {
       <NavDrawer />
       <Header />
       <main className="mainAnimatedPages skinBody">
+        {children}
         <Outlet />
       </main>
       <div className="mainDrawerHandle" />

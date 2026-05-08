@@ -23,7 +23,7 @@ interface GetItemsOptions {
   searchTerm?: string;
   types?: string[];
   includeMediaTypes?: string[];
-  sortBy?: string;
+  sortBy?: string | string[];
   sortOrder?: 'Ascending' | 'Descending';
   limit?: number;
   startIndex?: number;
@@ -34,8 +34,6 @@ interface ItemsResult {
   TotalRecordCount: number;
   StartIndex: number;
 }
-
-type ServerRole = 'emby' | 'embyConnect' | 'manual';
 
 export class EmbyApiClient implements ApiClient, ConnectionManager {
   servers: ServerInfo[] = [];
@@ -69,7 +67,7 @@ export class EmbyApiClient implements ApiClient, ConnectionManager {
     }
 
     const text = await response.text();
-    return text ? JSON.parse(text) : null;
+    return text ? JSON.parse(text) : (null as unknown as T);
   }
 
   async getUser(userId: string): Promise<User> {
@@ -99,7 +97,10 @@ export class EmbyApiClient implements ApiClient, ConnectionManager {
     if (options.searchTerm) params.append('SearchTerm', options.searchTerm);
     if (options.types?.length) params.append('IncludeItemTypes', options.types.join(','));
     if (options.includeMediaTypes?.length) params.append('IncludeMediaTypes', options.includeMediaTypes.join(','));
-    if (options.sortBy?.length) params.append('SortBy', options.sortBy.join(','));
+    if (options.sortBy) {
+      const sortByVal = Array.isArray(options.sortBy) ? options.sortBy.join(',') : options.sortBy;
+      params.append('SortBy', sortByVal);
+    }
     if (options.sortOrder) params.append('SortOrder', options.sortOrder);
     if (options.limit) params.append('Limit', options.limit.toString());
     if (options.startIndex) params.append('StartIndex', options.startIndex.toString());
