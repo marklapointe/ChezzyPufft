@@ -8,27 +8,20 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'touchicon.png', 'touchicon72.png', 'touchicon114.png', 'touchicon144.png'],
+      includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'Emby',
+        name: 'Emby Web',
         short_name: 'Emby',
         description: 'The open media solution.',
         theme_color: '#52B54B',
+        background_color: '#000000',
+        display: 'standalone',
         icons: [
           {
-            src: 'touchicon72.png',
-            sizes: '72x72',
-            type: 'image/png'
-          },
-          {
-            src: 'touchicon114.png',
-            sizes: '114x114',
-            type: 'image/png'
-          },
-          {
-            src: 'touchicon144.png',
-            sizes: '144x144',
-            type: 'image/png'
+            src: 'favicon.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any maskable'
           }
         ]
       },
