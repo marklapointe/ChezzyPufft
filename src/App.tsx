@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MainLayout } from './components/layout/MainLayout';
 import { LoginPage, HomePage, MoviesPage, TVShowsPage, MusicPage, LiveTVPage, SettingsPage, SearchPage, ItemDetailPage, SeriesDetail, SeasonDetail } from './pages';
+import { PlaybackPage } from './pages/playback/PlaybackPage';
 import { useAuthStore } from './store/authStore';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/livetv" element={<LiveTVPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/playback/:id" element={<PlaybackPage />} />
         <Route path="/item/:id" element={<ItemDetailPage />} />
         <Route path="/series/:id" element={<SeriesDetail />} />
         <Route path="/season/:id" element={<SeasonDetail />} />
