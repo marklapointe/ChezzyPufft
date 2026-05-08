@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MainLayout } from './components/layout/MainLayout';
-import { LoginPage } from './pages/LoginPage';
-import { HomePage } from './pages/HomePage';
+import { LoginPage, HomePage, MoviesPage, TVShowsPage, MusicPage, LiveTVPage, SettingsPage } from './pages';
 import { useAuthStore } from './store/authStore';
 
 function App() {
@@ -21,6 +20,11 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/tv" element={<TVShowsPage />} />
+        <Route path="/music" element={<MusicPage />} />
+        <Route path="/livetv" element={<LiveTVPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </MainLayout>

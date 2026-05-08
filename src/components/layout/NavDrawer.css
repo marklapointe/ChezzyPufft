@@ -1,3 +1,21 @@
+.navDrawerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.navDrawerOverlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
 .mainDrawer {
   position: fixed;
   top: 48px;
@@ -26,7 +44,9 @@
 }
 
 .navItem {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 14px;
   padding: 14px 20px;
   color: #b3b3b3;
   text-decoration: none;
@@ -35,13 +55,26 @@
   transition: background-color 0.2s, color 0.2s;
 }
 
+.navItem svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
 .navItem:hover {
   background-color: rgba(255, 255, 255, 0.05);
   color: #fff;
+}
+
+.navItem:hover svg {
+  opacity: 1;
 }
 
 .navItem.active {
   background-color: rgba(255, 255, 255, 0.1);
   color: #52B54B;
   border-left-color: #52B54B;
+}
+
+.navItem.active svg {
+  opacity: 1;
 }

@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
-import { LoadingSpinner } from '../components/layout';
 
-export function HomePage() {
+export function MusicPage() {
   const navigate = useNavigate();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
@@ -14,12 +13,12 @@ export function HomePage() {
   }, [isAuthenticated, navigate]);
 
   if (!isAuthenticated) {
-    return <LoadingSpinner />;
+    return null;
   }
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold text-white mb-6">Welcome Home</h1>
+      <h1 className="text-2xl font-bold text-white mb-6">Music</h1>
     </div>
   );
 }

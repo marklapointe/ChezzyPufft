@@ -1,11 +1,9 @@
-import { existsSync, readFileSync } from 'fs';
-import { join } from 'path';
-
 export interface EmbyWebUIConfig {
   apiUrl: string;
   wsUrl?: string;
   language?: string;
   theme?: 'light' | 'dark';
+  clientId?: string;
 }
 
 const DEFAULT_CONFIG: EmbyWebUIConfig = {
@@ -14,42 +12,32 @@ const DEFAULT_CONFIG: EmbyWebUIConfig = {
   theme: 'dark'
 };
 
-function getConfigPath(): string | null {
-  const xdgConfigHome = process.env.XDG_CONFIG_HOME;
-  const home = process.env.HOME || process.env.USERPROFILE;
+const STORAGE_KEY = 'chezzypufft-config';
 
-  if (xdgConfigHome) {
-    return join(xdgConfigHome, 'chezzypufft', 'config.json');
-  }
-
-  if (home) {
-    const linuxPath = join(home, '.config', 'chezzypufft', 'config.json');
-    if (existsSync(linuxPath)) {
-      return linuxPath;
-    }
-  }
-
-  const freebsdPath = '/usr/local/etc/chezzypufft/config.json';
-  if (existsSync(freebsdPath)) {
-    return freebsdPath;
-  }
-
-  return null;
+function generateClientId(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }
 
-function loadConfigFromFile(): EmbyWebUIConfig {
-  const configPath = getConfigPath();
-
-  if (!configPath || !existsSync(configPath)) {
-    return DEFAULT_CONFIG;
-  }
-
+function loadConfig(): EmbyWebUIConfig {
   try {
-    const content = readFileSync(configPath, 'utf-8');
-    const parsed = JSON.parse(content);
-    return { ...DEFAULT_CONFIG, ...parsed };
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      return { ...DEFAULT_CONFIG, ...parsed };
+    }
   } catch {
-    return DEFAULT_CONFIG;
+  }
+  return { ...DEFAULT_CONFIG };
+}
+
+function saveConfig(config: EmbyWebUIConfig): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+  } catch {
   }
 }
 
@@ -57,7 +45,11 @@ class ConfigService {
   private config: EmbyWebUIConfig;
 
   constructor() {
-    this.config = loadConfigFromFile();
+    this.config = loadConfig();
+    if (!this.config.clientId) {
+      this.config.clientId = generateClientId();
+      saveConfig(this.config);
+    }
   }
 
   get(): Readonly<EmbyWebUIConfig> {
@@ -84,24 +76,32 @@ class ConfigService {
     return this.config.theme || 'dark';
   }
 
+  getClientId(): string {
+    return this.config.clientId || generateClientId();
+  }
+
   setApiUrl(url: string): void {
     this.config = { ...this.config, apiUrl: url };
+    saveConfig(this.config);
   }
 
   setWsUrl(url: string): void {
     this.config = { ...this.config, wsUrl: url };
+    saveConfig(this.config);
   }
 
   setLanguage(lang: string): void {
     this.config = { ...this.config, language: lang };
+    saveConfig(this.config);
   }
 
   setTheme(theme: 'light' | 'dark'): void {
     this.config = { ...this.config, theme };
+    saveConfig(this.config);
   }
 
   reload(): void {
-    this.config = loadConfigFromFile();
+    this.config = loadConfig();
   }
 }
 

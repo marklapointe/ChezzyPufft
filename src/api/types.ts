@@ -866,3 +866,14 @@ export enum RemoteImageType {
   BoxRear = 'BoxRear',
   Art = 'Art'
 }
+
+export interface UserItemData {
+  PlaybackPositionTicks?: number;
+  PlaybackPosition?: number;
+  PlayCount?: number;
+  IsFavorite?: boolean;
+  Played?: boolean;
+  PlayedDate?: string;
+  LastPlayedDate?: string;
+  SubtitlePlaybackPositionTicks?: number;
+}

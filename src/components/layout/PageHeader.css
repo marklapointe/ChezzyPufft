@@ -1,0 +1,35 @@
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 32px;
+  gap: 24px;
+}
+
+.pageHeaderContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.pageSubtitle {
+  font-size: 16px;
+  color: #b3b3b3;
+  margin: 8px 0 0;
+  line-height: 1.4;
+}
+
+.pageHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
