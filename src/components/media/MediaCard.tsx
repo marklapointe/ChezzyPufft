@@ -13,6 +13,7 @@ interface MediaCardProps {
   variant?: MediaCardVariant;
   unplayedCount?: number;
   onContextMenu?: (e: React.MouseEvent) => void;
+  className?: string;
 }
 
 const ITEM_TYPE_LABELS: Partial<Record<ItemType, string>> = {

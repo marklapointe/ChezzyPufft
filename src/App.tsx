@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MainLayout } from './components/layout/MainLayout';
-import { LoginPage, HomePage, MoviesPage, TVShowsPage, MusicPage, LiveTVPage, SettingsPage } from './pages';
+import { LoginPage, HomePage, MoviesPage, TVShowsPage, MusicPage, LiveTVPage, SettingsPage, ItemDetailPage, SeriesDetail, SeasonDetail } from './pages';
 import { useAuthStore } from './store/authStore';
 
 function App() {
@@ -25,6 +25,9 @@ function App() {
         <Route path="/music" element={<MusicPage />} />
         <Route path="/livetv" element={<LiveTVPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/item/:id" element={<ItemDetailPage />} />
+        <Route path="/series/:id" element={<SeriesDetail />} />
+        <Route path="/season/:id" element={<SeasonDetail />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </MainLayout>
