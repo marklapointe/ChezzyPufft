@@ -1,0 +1,15 @@
+[Unit]
+Description=ChezzyPufft WebUI for Emby
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=__PREFIX__/share/chezzypufft
+ExecStart=/usr/bin/npx serve -l 3000
+Restart=on-failure
+RestartSec=5
+User=emby
+Group=emby
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,60 @@
+# Linux platform-specific Makefile extensions
+
+# Service management commands
+SYSTEMD_UNIT := $(SYSTEMDDIR)/emby-webui.service
+
+define install_service_impl
+	if [ -d /run/systemd/system ]; then \
+		echo "Installing systemd service..."; \
+		sed 's|__PREFIX__|$(PREFIX)|g' packaging/linux/emby-webui.service.tmpl > $(SYSTEMD_UNIT); \
+		systemctl daemon-reload; \
+		systemctl enable emby-webui; \
+	else \
+		echo "systemd not detected, skipping service installation"; \
+	fi
+endef
+
+define uninstall_service_impl
+	if [ -d /run/systemd/system ]; then \
+		echo "Removing systemd service..."; \
+		systemctl stop emby-webui 2>/dev/null || true; \
+		systemctl disable emby-webui 2>/dev/null || true; \
+		rm -f $(SYSTEMD_UNIT); \
+		systemctl daemon-reload; \
+	fi
+endef
+
+define restart_service_impl
+	@if [ -d /run/systemd/system ]; then \
+		systemctl restart emby-webui; \
+	else \
+		echo "systemd not detected"; \
+	fi
+endef
+
+define start_service_impl
+	@if [ -d /run/systemd/system ]; then \
+		systemctl start emby-webui; \
+	else \
+		echo "systemd not detected"; \
+	fi
+endef
+
+define stop_service_impl
+	@if [ -d /run/systemd/system ]; then \
+		systemctl stop emby-webui; \
+	else \
+		echo "systemd not detected"; \
+	fi
+endef
+
+define status_service_impl
+	@if [ -d /run/systemd/system ]; then \
+		systemctl status emby-webui; \
+	else \
+		echo "systemd not detected"; \
+	fi
+endef
+
+# FreeBSD rc.d alternative (included but not used on Linux)
+RC_SCRIPT := $(PREFIX)/etc/rc.d/emby_webui

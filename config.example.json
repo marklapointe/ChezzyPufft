@@ -1,0 +1,6 @@
+{
+  "apiUrl": "http://localhost:8096",
+  "wsUrl": "ws://localhost:8096",
+  "language": "en-US",
+  "theme": "dark"
+}

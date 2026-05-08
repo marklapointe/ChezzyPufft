@@ -1,0 +1,27 @@
+# macOS platform-specific Makefile extensions (stub for future use)
+
+define install_service_impl
+	@echo "macOS service installation not yet implemented"
+	@echo "Use: brew services start chezzypufft"
+endef
+
+define uninstall_service_impl
+	@echo "macOS service uninstallation not yet implemented"
+	@echo "Use: brew services stop chezzypufft"
+endef
+
+define restart_service_impl
+	@echo "Restart not yet implemented for macOS"
+endef
+
+define start_service_impl
+	@echo "Start not yet implemented for macOS"
+endef
+
+define stop_service_impl
+	@echo "Stop not yet implemented for macOS"
+endef
+
+define status_service_impl
+	@echo "Status not yet implemented for macOS"
+endef

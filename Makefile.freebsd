@@ -1,0 +1,38 @@
+# FreeBSD platform-specific Makefile extensions
+
+# FreeBSD uses rc.d for services
+RC_SCRIPT := $(PREFIX)/etc/rc.d/emby_webui
+
+define install_service_impl
+	echo "Installing FreeBSD rc.d script..."; \
+	mkdir -p $(PREFIX)/etc/rc.d; \
+	sed 's|__PREFIX__|$(PREFIX)|g' packaging/freebsd/emby_webui > $(RC_SCRIPT); \
+	chmod +x $(RC_SCRIPT); \
+	echo "emby_webui_enable=YES" >> /etc/rc.conf.local 2>/dev/null || true
+endef
+
+define uninstall_service_impl
+	echo "Removing FreeBSD rc.d script..."; \
+	$(RC_SCRIPT) stop 2>/dev/null || true; \
+	rm -f $(RC_SCRIPT); \
+	sed -i '' '/emby_webui_enable/d' /etc/rc.conf.local 2>/dev/null || true
+endef
+
+define restart_service_impl
+	@$(RC_SCRIPT) restart
+endef
+
+define start_service_impl
+	@$(RC_SCRIPT) start
+endef
+
+define stop_service_impl
+	@$(RC_SCRIPT) stop
+endef
+
+define status_service_impl
+	@$(RC_SCRIPT) status
+endef
+
+# Linux systemd (not used on FreeBSD)
+SYSTEMD_UNIT := /lib/systemd/system/emby-webui.service
