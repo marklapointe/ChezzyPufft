@@ -5,6 +5,7 @@ export { TVShowsPage } from './TVShowsPage';
 export { MusicPage } from './MusicPage';
 export { LiveTVPage } from './LiveTVPage';
 export { SettingsPage } from './SettingsPage';
+export { SearchPage } from './SearchPage';
 export { ItemDetailPage } from './libraries/ItemDetailPage';
 export { SeriesDetail } from './libraries/SeriesDetail';
 export { SeasonDetail } from './libraries/SeasonDetail';
